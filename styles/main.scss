@@ -1,0 +1,40 @@
+// Importation des partiels
+@import "variables";
+@import "cards";
+@import "modals";
+@import "responsive";
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-weight: bold;
+  color: $accent-color;
+
+  &::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border: 4px solid #ddd;
+    border-top-color: $accent-color;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-left: 10px;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none !important;
+}
