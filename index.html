@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFlow App</title>
+    <link rel="stylesheet" href="styles/main.css"> </head>
+<body>
+
+    <div class="app-container">
+        <header class="header">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for recipe">
+            </div>
+        </header>
+
+        <main id="main-content">
+            <section id="recipe-section">
+                <h2 id="section-title">Recommended</h2>
+                <div id="recipe-grid" class="recipe-grid">
+                    </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <button id="nav-home" class="active">🏠</button>
+            <button id="nav-fav">❤️</button>
+            <button id="nav-profile">👤</button>
+        </nav>
+    </div>
+
+    <div id="recipe-modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="close-modal">Back</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
