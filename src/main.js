@@ -16,7 +16,30 @@ async function init() {
         renderRecipes(allRecipes);
 
        // 1. Listener bach t-hall l-page details
+grid.addEventListener('click', (e) => {
+    const card = e.target.closest('.recipe-card');
+    if (card) {
+        const recipeId = card.dataset.id; // T-akked mn render.js
+        const recipe = allRecipes.find(r => r.id == parseInt(recipeId));
+        if (recipe) {
+            showRecipeDetails(recipe);
+        }
+    }
+});
 
+// 2. Listener dyal l-Accordion (Ingredient/Preparation)
+document.addEventListener('click', (e) => {
+    const header = e.target.closest('.accordion-header');
+    if (header) {
+        const section = header.parentElement;
+        section.classList.toggle('open');
+        
+        // Beddel l-s-ham (bach t-ban interactive)
+        const span = header.querySelector('span');
+        if (span) {
+            span.textContent = section.classList.contains('open') ? '▲' : '▼';
+        }
+    }
 });
 
 // 3. Listener dyal l-bouton Back (Bach t-sed l-modal)
