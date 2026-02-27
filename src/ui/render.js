@@ -25,7 +25,43 @@ export function renderRecipes(recipes) {
 `;
   });
 }
+export function showRecipeDetails(recipe) {
+  const modal = document.getElementById("recipe-modal");
+  const modalBody = document.getElementById("modal-body");
 
+  modalBody.innerHTML = `
+        <div class="detail-header">
+            <img src="${recipe.image}" class="main-img">
+            <div class="info-overlay">
+                <h2>${recipe.name}</h2>
+                <p>${recipe.ingredients.length} ingredients</p>
+                <div class="stats">
+                    <span>⏱ ${recipe.prepTimeMinutes} Min</span>
+                    <span>🔥 ${recipe.caloriesPerServing} Kcal</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-section">
+            <div class="accordion-header">
+                <h3>Ingredient</h3>
+                <span>▼</span>
+            </div>
+            <div class="accordion-content">
+                <ul>${recipe.ingredients.map((ing) => `<li>${ing}</li>`).join("")}</ul>
+            </div>
+        </div>
+
+        <div class="accordion-section">
+            <div class="accordion-header">
+                <h3>Preparation</h3>
+                <span>▼</span>
+            </div>
+            <div class="accordion-content">
+                <ol>${recipe.instructions.map((ins) => `<li>${ins}</li>`).join("")}</ol>
+            </div>
+        </div>
+    `;
 
   modal.classList.remove("hidden");
 }
