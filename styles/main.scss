@@ -93,4 +93,102 @@ color: #BDBDBD;
 .bottom-nav button.active {
 color: #000000;
 }
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFE8CC; // Lon l-orange l-baregh bhal design
+    z-index: 2000;
+    overflow-y: auto; // Bach t-qder t-scrolly ila kant l-wasfa twila
+
+    &.hidden {
+        display: none;
+    }
+}
+.detail-header {
+    position: relative;
+    width: 100%;
+    height: 300px;
+
+    .main-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    .info-overlay {
+        position: absolute;
+        bottom: -50px; // Bach t-khrej chouya 3la t-swira
+        left: 10%;
+        right: 10%;
+        background: white;
+        padding: 20px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+
+        h2 { margin: 0; font-size: 1.2rem; color: #333; }
+        p { color: #888; font-size: 0.9rem; margin: 5px 0; }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #FF7A00; // Lon l-icones
+        }
+    }
+}
+.accordion-section {
+    background: white;
+    margin: 80px 20px 20px 20px; // M-b3da 3la l-overlay li l-fouq
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+    .accordion-header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .accordion-content {
+        max-height: 0; // Khawi f l-bdya
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        padding: 0 20px;
+        
+        ul, ol { padding-bottom: 20px; color: #555; }
+    }
+
+    // Mlli kaddiro l-click b JS, kan-zido had l-class
+    &.open .accordion-content {
+        max-height: 1000px; // Kat-hall
+        border-top: 1px solid #eee;
+    }
+}
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 

@@ -1,30 +1,35 @@
-// src/main.js
 import { getAllRecipes } from './api/recipeProvider.js';
-import { renderRecipes } from './ui/render.js';
+import { renderRecipes, showRecipeDetails } from './ui/render.js';
 
-let allRecipes = []; // Hna ghadi n-khbiw l-data l-asliya
+let allRecipes = [];
 
 async function init() {
+    const grid = document.getElementById('recipe-grid');
     const loader = document.getElementById('loader');
-    const searchInput = document.getElementById('search-input'); // L-input dyal l-search
 
-    loader.classList.remove('hidden');
-    allRecipes = await getAllRecipes(); // Jib l-data o khbiha f l-variable
-    loader.classList.add('hidden');
+    try {
+        loader.classList.remove('hidden');
+        allRecipes = await getAllRecipes();
+        loader.classList.add('hidden');
 
-    renderRecipes(allRecipes); // Affichi kolchi f l-bdya
+        // 1. Affichi les cards (Bach ma-i-mchiwch)
+        renderRecipes(allRecipes);
 
-    // Event Listener dyal l-recherche (US3)
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        
-        // Filter l-wasafat li fihom dak l-ism
-        const filtered = allRecipes.filter(recipe => 
-            recipe.name.toLowerCase().includes(searchTerm)
-        );
+       // 1. Listener bach t-hall l-page details
 
-        renderRecipes(filtered); // Re-render ghir l-filtered data
-    });
+});
+
+// 3. Listener dyal l-bouton Back (Bach t-sed l-modal)
+document.addEventListener('click', (e) => {
+    if (e.target.id === 'close-modal' || e.target.classList.contains('back-btn')) {
+        const modal = document.getElementById('recipe-modal');
+        modal.classList.add('hidden');
+    }
+});
+
+    } catch (error) {
+        console.error("Erreur f l-app:", error);
+    }
 }
 
 init();
